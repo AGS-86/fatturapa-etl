@@ -27,17 +27,62 @@ PostgreSQL
 
 ```text
 fatturapa-etl/
-├── invoices/
+├── invoices/              # input invoice files
 ├── sql/
-	 ├─ schema.sql
-	 └─ ERD.md
+│   ├── schema.sql         # database schema
+│   └── ERD.md             # entity relationship diagram
 ├── src/
-	 ├─ extract_invoice.py
-	 ├─ transform.py
-	 └─ load.py
+│   ├── extract_invoice.py
+│   ├── transform.py
+│   ├── load.py
+│   └── batch_loader.py
+├── config.yaml.example    # configuration template
 └── README.md
 ```
+## Database and schema
 
+The ETL pipeline currently targets PostgreSQL.
+The database schema is defined in sql/schema.sql.
+
+With minimal adaptations (mainly data types and constraints), the schema can be ported to other relational databases such as MySQL or SQL Server.
+
+The database must be created manually on the target server before running the pipeline.
+
+The schema is optimized for analytical workloads, enabling downstream reporting and data analysis use cases.
+
+## Configuration
+
+The pipeline is configured via a YAML file.
+
+A configuration template is provided in config.yaml.example.
+Sensitive values (such as database passwords) are expected to be provided via environment variables.
+
+Main configuration sections include:
+
+- database connection parameters
+
+- company VAT numbers to process
+
+- filesystem paths for input, processed and error files
+
+- logging configuration
+
+The batch loader expects the configuration file to be named `config.yaml`
+and located in the project root.
+
+The `config.yaml` file is intentionally excluded from version control.
+
+## Batch execution and error handling
+
+The ETL process is orchestrated by a batch loader that coordinates all pipeline steps.
+
+Invalid or malformed invoice files are automatically:
+
+- logged
+
+- moved to a dedicated error directory
+
+This ensures traceability and robustness during batch execution.
 
 ## License
 This project is released under the MIT License.

@@ -1,0 +1,22 @@
+database:
+  type: postgresql
+  host: localhost
+  port: 5432
+  db_name: invoices_db
+  user: postgres
+  password: DB_PASSWORD
+
+company_reference:
+  vat_number:
+    - "COMPANY_VAT_NUMBER 1"
+    - "COMPANY_VAT_NUMBER 2"
+     
+paths:
+  invoices_dir: ../invoices
+  archive_dir: ../processed
+  error_dir: ../errors
+
+logging:
+  level: INFO
+  file_path: ../logs
+  log_file: etl.log

@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Configuration files
+config.yaml
+
+# Logs
+logs/
+*.log
+
+# Processed and error data
+processed/
+errors/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+.vs/
