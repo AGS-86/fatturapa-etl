@@ -34,9 +34,11 @@ fatturapa-etl/
 ├── src/
 │   ├── extract_invoice.py
 │   ├── transform.py
-│   ├── load.py
-│   └── batch_loader.py
+│   └── load_postgres.py
+├── batch_loader.py        # ETL entry point
 ├── config.yaml.example    # configuration template
+├── .gitignore
+├── LICENSE
 └── README.md
 ```
 ## Database and schema
