@@ -11,8 +11,12 @@ def to_decimal(value):
 def to_date(value):
     if not value:
         return None
-    return datetime.strptime(value, "%Y-%m-%d").date()
-
+    elif len(value) >= 10 and value[4] == "-" and value[7] == "-":
+        head = value[:10]
+        try:
+            return datetime.strptime(head, "%Y-%m-%d").date()
+        except ValueError:
+            return None
 
 def normalize_string(value):
     return value.strip() if isinstance(value, str) else None
