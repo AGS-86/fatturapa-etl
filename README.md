@@ -33,7 +33,9 @@ fatturapa-etl/
 │   ├── schema.sql			# database schema
 │	├── ERD.md				# entity relationship diagram
 │	└── analysis/
-│		└── data_quality.sql
+│		├── data_quality.sql
+│		├── views.md
+│		└── kpis.sql
 │
 ├── src/
 │   ├── extract_invoice.py
