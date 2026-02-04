@@ -27,16 +27,20 @@ PostgreSQL
 
 ```text
 fatturapa-etl/
-├── invoices/              # input invoice files
+├── invoices/				# input invoice files
 ├── sql/
-│   ├── schema.sql         # database schema
-│   └── ERD.md             # entity relationship diagram
+│   ├── README.md			
+│   ├── schema.sql			# database schema
+│	├── ERD.md				# entity relationship diagram
+│	└── analysis/
+│		└── data_quality.sql
+│
 ├── src/
 │   ├── extract_invoice.py
 │   ├── transform.py
 │   └── load_postgres.py
-├── batch_loader.py        # ETL entry point
-├── config.yaml.example    # configuration template
+├── batch_loader.py			# ETL entry point
+├── config.yaml.example		# configuration template
 ├── .gitignore
 ├── LICENSE
 └── README.md
