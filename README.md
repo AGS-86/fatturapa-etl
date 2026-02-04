@@ -92,5 +92,32 @@ Invalid or malformed invoice files are automatically:
 
 This ensures traceability and robustness during batch execution.
 
+## SQL analytics
+
+The project includes an SQL analytics layer built on top of the ETL-loaded data.
+
+### Structure
+
+- Raw tables populated by the ETL pipeline are stored in the default `public` schema.
+- Analytical views are defined in a dedicated `analytics` schema.
+- Data quality checks and KPI queries are provided as SQL scripts under `sql/analysis/`.
+
+### Data quality
+
+The file `sql/analysis/data_quality.sql` contains repeatable audit queries to validate:
+- structural integrity (e.g. duplicates, missing lines)
+- accounting consistency (e.g. invoice lines vs VAT summary)
+
+Data cleaning and normalization are intentionally handled upstream during the ETL transform phase.
+
+### KPIs
+
+The file `sql/analysis/kpis.sql` contains a curated set of analytical KPI queries
+(e.g. revenue trends, top customers/suppliers, VAT distribution).
+
+KPIs are provided as SQL queries rather than database views.
+Depending on downstream needs, these queries can be promoted to views
+(e.g. `analytics.kpi_*`) to simplify integration with BI tools.
+
 ## License
 This project is released under the MIT License.
